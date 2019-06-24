@@ -1,5 +1,4 @@
-require "pry"
-# Write your code here!
+require 'pry'
 def game_hash 
 	{
 		home: {
@@ -121,105 +120,12 @@ def game_hash
 end
 
 def num_points_scored(name)
-	game_hash.each do |place, team|
-		team[:players].each do |attribute, data|
-			if name == attribute
-				return data[:points]
-			end
-		end
-	end
+  game_hash.each do |place, team|
+    team[:players].each do |player|
+              binding.pry
+      if player.key == name
+        return [:points]
+      end
+    end
+  end
 end
-
-def shoe_size(name) 
-	game_hash.each do |place, team|
-		team[:players].each do |attribute, data|
-			if name == attribute
-				return data[:shoe]
-			end
-		end
-	end
-end
-
-def team_colors(name_of_team)
-	game_hash.each do |place, team|			
-		if name_of_team == team[:team_name]
-			return team[:colors]
-		end
-	end
-end
-
-def team_names
-	array_of_team_names = []
-	game_hash.each do |place, team|
-		array_of_team_names.push(team[:team_name])
-	end
-	return array_of_team_names
-end
-
-def player_numbers(name_of_team)
-	array_of_jersey_numbers = []
-	game_hash.each do |place, team|
-		if name_of_team == team[:team_name]
-			team[:players].each do |attribute, data|
-			array_of_jersey_numbers.push(data[:number])
-			end
-		end
-	end
-	return array_of_jersey_numbers
-end
-
-def player_stats(name)
-	game_hash.each do |place, team|
-		team[:players].each do |attribute, data|
-			if name == attribute
-				return data
-			end
-		end
-	end
-end
-
-def big_shoe_rebounds
-	home_or_away = ""
-	player_name = ""
-	shoe_size = 0 
-	game_hash.each do |place, team|
-		team[:players].each do |attribute, data|
-			current_shoe_size = data[:shoe]
-			if current_shoe_size > shoe_size
-				home_or_away = place
-				player_name = attribute
-				shoe_size = current_shoe_size
-			end
-		end
-	end
-	game_hash[home_or_away][:players][player_name][:rebounds]
-end
-
-# Bonus
-
-
-def most_points_scored
-  return "Ben Gordon"
-end
-
-def winning_team
-  return "Brooklyn Nets"
-end
-
-def player_with_longest_name
-  return "Bismack Biyombo"
-end
-
-def long_name_steals_a_ton?
-  true
-end
-
-
-
-
-
-
-
-
-
-
